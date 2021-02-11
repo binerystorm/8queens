@@ -8,21 +8,21 @@ def diag(ls):
 					break 
 	return False
 
-# def Q(op, save = []):
-# 	fulllist = []
-# 	if len(op) == 1:
-# 		final = save + op
-# 		if not diag(final):
-# 			print(final)
-# 			return 0
-# 		return 0
-# 	for i in range(len(op)):
-# 		pasrecurs = save[:]
-# 		pasrecurs.append(op[i])
-# 		pasop = op[:i] + op[i+1:]
-# 		Q(pasop, pasrecurs)
-# Q(ls)
-# 
+def Q(op, save = []):
+	fulllist = []
+	if len(op) == 1:
+		final = save + op
+		if not diag(final):
+			print(final)
+			return 0
+		return 0
+	for i in range(len(op)):
+		pasrecurs = save[:]
+ 		pasrecurs.append(op[i])
+ 		pasop = op[:i] + op[i+1:]
+ 		Q(pasop, pasrecurs)
+ Q(ls)
+ 
 ls2 = [1,2,3]
 
 def TQ(op, save = [], allper = []):

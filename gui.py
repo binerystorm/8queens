@@ -6,7 +6,7 @@ import time
 class Piece:
     spacing = 25
     color_table = {
-    1: (0,255,0)
+    1: (0,255,0),
     2: (255,0,0)
     }
 
@@ -14,10 +14,14 @@ class Piece:
         self.type = type
         self.color = self.color_table[self.type]
         self.pos = (1*self.spacing, 1*self.spacing)
-        self.peice = pygame.Rect(screen, )
+        self.screen = screen
 
     def move(self, x, y):
         self.pos = (self.pos[0] + (x * self.spacing), self.pos[1] + (y * self.spacing))
+
+    def draw(self):
+        x, y = self.pos
+        pygame.draw.rect(self.screen, self.color_table[self.type], pygame.Rect(x, y, 10, 10))
 
 
 def draw_background(scr):
@@ -47,11 +51,16 @@ pygame.init()
 
 scr = pd.set_mode((400, 400))
 pd.set_caption("Chess board")
+piece = Piece(1, scr)
 
 while running:
     draw_background(scr)
+    piece.draw()
+    time.sleep(1)
+
     # pygame.draw.rect(scr, (225,0,0), pygame.Rect(100,100,100,100))
     pd.flip()
+    piece.move(1,0)
     for event in pe.get():
         if event.type == pygame.QUIT:
             running = False
